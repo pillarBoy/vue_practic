@@ -99,7 +99,9 @@ module.exports = {
         reset: {
           margin: 0,
           padding: 0,
-          borderRadius: 0
+          borderRadius: 0,
+          listStyle: 'none',
+          boxSizing: 'border-box'
         }
       }),
       require('precss')
