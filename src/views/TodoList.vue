@@ -2,10 +2,7 @@
   <div id="todo-list">
     <div>
       <h1 v-bind:class='{ "animated swing": isActive}'>run</h1>
-      <transition
-        enter-active-class='animated bounceIn'
-        leave-active-class='animated bounceOutDown'
-        >
+      <transition name='test'>
         <h1 v-if='isActive'>transition test</h1>
       </transition>
       <p>{{count}}</p>
@@ -52,14 +49,11 @@ export default {
             type: 'addItem',
             payload: [value]
           })
-          console.log('change')
-
           this.valueI = ''
         }
       }
     },
     addCount: function () {
-      console.log(this.isActive)
       this.isActive = !this.isActive
       this.$store.commit(mut.ADD_COUNT)
     }
@@ -88,5 +82,11 @@ export default {
           border-bottom: 1px solid #ccc;
       }
     }
+  }
+  .test-enter-active {
+    animation: bounceIn .5s;
+  }
+  .test-leave-active {
+    animation: bounceOut .5s;
   }
 </style>

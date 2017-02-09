@@ -2,32 +2,72 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="max-age=3600"/>
+    <meta http-equiv="Expires" content="Mon, 20 Jul 2018 23:00:00 GMT" />
     <title></title>
-    <script type="text/javascript" src='https://code.jquery.com/jquery-3.1.1.js'>
-
-    </script>
-    <script type="text/javascript">
-      window.onload=function(){
-        $("#sel").html(`<option value="11">14</option><option value="12">12</option><option value="13">13</option>`)
-
-        $("#sel option:nth-child(1)").attr('selected', 'selected')
-        $("#sel option:nth-child(2)").attr('selected', 'selected')
-      }
-
-    </script>
+    <script type="text/javascript" src='https://code.jquery.com/jquery-3.1.1.js'></script>
   </head>
   <body>
-    <select id='sel' multiple='multiple' class="" name="">
 
-    </select>
-    <button type="button" id='btn' name="button">sel</button>
     <script type="text/javascript">
-    // $("#sel option:nth-child(1)").attr('selected', 'selected')
-    // $("#sel option:nth-child(2)").attr('selected', 'selected')
-      // $("#btn").click(function(){
-      //   $("#sel option:nth-child(1)").attr('selected', 'selected')
-      //   $("#sel option:nth-child(2)").attr('selected', 'selected')
-      // })
+      var TianGan =
+          '甲乙丙丁戊己庚辛壬癸',
+          DiZhi = '子丑寅卯辰巳午未申酉戌亥',
+          the_five_elements = '金木水火土';
+      var TopArr = TianGan.split(''),
+        DownArr = DiZhi.split(''),
+        TheFiveElems = the_five_elements.split('');
+
+        console.log(TopArr, DownArr);
+
+      function LunHui() {
+        for(var i=0; i < 60; i++) {
+          var Tindex = i%10, Dindex = i%12;
+          if (Tindex%2 === 0) { // 阳 (white) TG
+            console.log(TopArr[Tindex]+": W");
+          }else { // 阴 Black TG
+
+          }
+
+          if(Dindex%2 === 0){ // 阳 (white) DZ
+
+          }else {// 阴 Black DZ
+
+          }
+          var times = TopArr[Tindex] +" : "+ DownArr[Dindex]
+        }
+      }
+      // LunHui()
+
+      // 天干 五合 六合
+      function halfPair(arr, len) {
+        var result = [], max, change, nextI;
+        if(len === 10) {
+          max = len/2
+          change = 1
+          nextI = 5
+        }else if(len === 12) {
+          max = len
+          change = 2
+          nextI = 1
+        }
+
+        for(var i = 0; i< max; i+=change){
+          var item = arr[i] + arr[i + nextI]
+          result.push(item)
+        }
+
+        return result
+      }
+
+      var T_halfPair = halfPair(TopArr, 10)
+      var D_halfPair = halfPair(DownArr, 12)
+      console.log(T_halfPair);
+      console.log(D_halfPair);
+      // 地支 3合
+      function ThreePair() {
+          //
+      }
     </script>
   </body>
 </html>

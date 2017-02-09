@@ -4,7 +4,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store'
 import routes from './route.js'
-
+import CircleMenu from 'vue-circle-menu'
 import App from './App'
 
 Vue.use(VueRouter)
@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes
 })
+Vue.component('CircleMenu', CircleMenu)
 
 /* eslint-disable no-new */
 new Vue({
