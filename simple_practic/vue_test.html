@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue practice</title>
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="" id='app'>
+      {{msg}}
+      <span v-bind:title='title'>span</span>
+    </div>
+    <hr>
+    <div class="" id='app2'>
+      <span>{{msg}}</span>
+    </div>
+    <hr>
+    <div class="" id='app3'>
+      <span v-if='show'>show test v-if app3.show=false</span>
+    </div>
+    <hr>
+    <div class="" id='app4'>
+      <ul>
+        <li v-for='item in list'>{{item.name}}</li>
+      </ul>
+      <p>todo-item props get data and use v-bind send msg</p>
+      <ul>
+        <todo-item v-for='item in list' v-bind:todo='item'></todo-item>
+      </ul>
+      <input type="text" v-model="msg">
+      <span>{{msg}}</span>
+      <input type="text" v-model='wFn'>
+    </div>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'hello vue ' + new Date(),
+          title: 'span_title'
+        }
+      })
+      var app2 = new Vue({
+        el: '#app2',
+        data: {
+          msg: 'app2 msg'
+        }
+      })
+      var app3 = new Vue({
+        el: '#app3',
+        data: {
+          show: true
+        }
+      })
+
+      Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{todo.name}}</li>'
+      })
+
+      var app4 = new Vue({
+        el: '#app4',
+        data: {
+          list: [
+            {name: 'Tom'},
+            {name: 'Lucy'},
+            {name: 'Kette'}
+          ],
+          msg: 'v-model',
+          wFn: 'watch is chang'
+        },
+        methods: {
+          add: function() {
+            this.msg = 'add'
+          },
+          wChange: function(v, o) {
+            console.log('v: '+v+' o:'+o);
+          },
+          callk: function(v) {
+            console.log(v);
+          }
+        },
+        watch: {
+          msg: function(val, oldVal) {
+            console.log(val, oldVal);
+          },
+          wFn: {
+            handler: 'wChange',
+            immediate: true
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
