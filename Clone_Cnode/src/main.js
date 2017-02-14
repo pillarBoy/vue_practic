@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+window.MAIN_START_TIME = new Date().getTime()
 
 /* eslint-disable no-new */
 new Vue({
