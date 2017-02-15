@@ -1,48 +1,49 @@
-$.<template lang="html">
+<template lang="html">
   <div id='date-component'>
     <div class="condition">
-      <h1>date compoent</h1>
-      <button @click='preMonth' type="button" name="button">{{'<<'}}</button>
-      <input type="text" name="" value="" ref='time'>
-      <button @click='selectDate' type="button" name="button">选择日期</button>
-      <button @click='nextMonth' type="button" name="button">{{'>>'}}</button>
+      <input type="text" @click="selectDate" name="" value="" ref='time' v-model='theDate' />
     </div>
-    <table>
-      <caption align="top">{{dateTitl||'xxxx年xx'}}</caption>
+    <table v-show='showTab'>
+      <caption align="top">
+        <button @click='preMonth' type="button" name="button">{{'<<'}}</button>
+        {{dateTitl||'xxxx年xx'}}
+        <button @click='nextMonth' type="button" name="button">{{'>>'}}</button>
+      </caption>
       <thead>
         <tr>
           <td v-for='day in days'>{{day}}</td>
         </tr>
       </thead>
-      <tbody>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
+      <tbody @click='chooseTheDate'>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-
 export default {
+  props: ['defaultTime'],
   data () {
     return {
+      showTab: false,
       days: ['日', '一', '二', '三', '四', '五', '六'],
       dateTitl: '',
       dates: [],
@@ -50,11 +51,33 @@ export default {
       Month: null,
       day: null,
       totalDates: null,
-      theFirstDay: null
+      theFirstDay: null,
+      theDate: ''
     }
   },
   methods: {
+    // display calendar
+    showTable: function () {
+      this.showTab = !this.showTab
+    },
+    // click calendar
+    chooseTheDate: function (event) {
+      if (event.target.innerHTML.trim()) {
+        let clickDate = parseInt(event.target.innerHTML)
+        let selDate = clickDate < 10 ? '0' + clickDate : clickDate
+        let selMonth = this.Month < 10 ? '0' + this.Month : this.Month
+        this.theDate = this.Year + '-' + selMonth + '-' + selDate
+      }
+      // get select date
+      let forParent = this.theDate || 'test'
+      // 给父组件穿选择的日期
+      this.$emit('getDate', forParent)
+      // hide date
+      this.showTab = !this.showTab
+    },
+    // click input
     selectDate: function () {
+      this.showTab = !this.showTab
       this.dealDate()
     },
     // next month
@@ -89,15 +112,14 @@ export default {
           if (time.trim()) {
             time = new Date(time)
           } else {
-            time = new Date()
+            time = this.defaultTime ? new Date(this.defaultTime) : new Date()
           }
           this.Year = time.getFullYear()
           this.Month = time.getMonth() + 1
       }
 
       this.theFirstDay = this.calFirstDay(this.Year, this.Month)
-      let leapYear = this.isLeapYear(this.Year)
-      this.totalDates = this.theMonthTotalDates(this.Year, this.Month, leapYear)
+      this.totalDates = this.theMonthTotalDates(this.Year, this.Month, this.isLeapYear(this.Year))
       this.dateTitl = `${this.Year}年${this.Month}月`
       // 装载日历
       this.loadDate(this.theFirstDay, this.totalDates)
@@ -172,15 +194,14 @@ export default {
 <style lang="css">
   #date-component {
     .condition {
-      margin-bottom: 5px;
-      line-height: 40px;
+        line-height: 30px;
     }
     table {
       width: 350px;
       margin: 0 auto;
       border-collapse: collapse;
       caption {
-        line-height: 35px;
+        line-height: 30px;
         font-size: 18px;
       }
       thead {

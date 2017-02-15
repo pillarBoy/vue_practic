@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import DateComponent from 'components/DateComponent'
+import HomePage from '../pages/HomePage'
 
 Vue.use(Router)
 
@@ -8,8 +8,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'dateC',
-      component: DateComponent
+      name: 'home',
+      component: HomePage
     }
+    // {
+    //   path: '/test',
+    //   name: 'test',
+    //   component: DateTest
+    // }
   ]
 })
