@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="">
+  <div id="details">
     <header>
       <button type="button" name="button" @click='$router.go(-1)'>返回</button>
     </header>
-    <div class="">
+    <div class="content">
       <hr>
       <h2>author: {{details.author.loginname}}</h2>
       <h2>{{details.title}}</h2>
@@ -57,4 +57,30 @@ export default {
 </script>
 
 <style lang="css">
+#details {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  header {
+    position: fixed;
+  }
+  .content {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+    max-width: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+  pre.prettyprint {
+    word-wrap: normal;
+    max-width: 100%;
+    padding: 1.5rem;
+    overflow: auto;
+  }
+  code {
+    max-width: 100%;
+    overflow: auto;
+  }
+}
 </style>
