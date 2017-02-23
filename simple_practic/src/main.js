@@ -2,12 +2,15 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import CircleMenu from 'vue-circle-menu'
+import infiniteScroll from 'vue-infinite-scroll'
+
 import store from './store'
 import routes from './route.js'
-import CircleMenu from 'vue-circle-menu'
 import App from './App'
 
 Vue.use(VueRouter)
+Vue.use(infiniteScroll)
 
 const router = new VueRouter({
   routes

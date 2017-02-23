@@ -1,21 +1,24 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+    <transition
+    name="zoom"
+    mode="out-in"
+    >
+      <router-view></router-view>
+    </transition>
     <NavPage />
   </div>
 </template>
 
 <script>
+import 'animate.css'
 import NavPage from './components/NavPage'
 export default {
   data () {
     return {}
   },
-  methods: {
-    test_time () {
-
-    }
-  },
+  methods: {},
   components: {
     NavPage: NavPage
   }
@@ -35,6 +38,20 @@ a{
 div,p,span {
   box-sizing: border-box;
 }
+button {
+  border: none;
+  padding: .3rem .6rem;
+  background-color: transparent;
+}
+.clear-fixed {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+    height: 0px;
+    font-size: 0px;
+  }
+}
 #app {
   font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -51,6 +68,14 @@ div,p,span {
     color: $activeColor;
     background-color: $activeBackColor;
   }
+}
+
+.zoom-enter-active {
+  animation: slideInLeft .5s ease-in-out;
+}
+
+.zoom-leave-active {
+   animation: slideOutRight .5s ease-in-out;
 }
 
 </style>

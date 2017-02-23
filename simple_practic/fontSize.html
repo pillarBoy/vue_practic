@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <style media="screen">
+      html {
+        font-size: 18px;
+      }
+      body{
+        margin: 0px;
+      }
+      .test{
+        /*20个字符*/
+        width: 100%;
+        text-align: justify;
+      }
+    </style>
+    <title></title>
+  </head>
+  <body>
+    <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+    <p class="test">为大量需要文章发表的人们提供方便和保障本网站承诺正规渠道文章发表信誉保障兼顾障。</p>
+    <script type="text/javascript">
+      function getFontSize() {
+        var fontSize = parseInt(getComputedStyle(document.querySelector('.test')).width) / 20
+        document.querySelector('.test').style.fontSize = fontSize+'px'
+      }
+      window.onresize = function () {
+        getFontSize()
+      }
+      window.onload = function () {
+        getFontSize()
+      }
+    </script>
+  </body>
+</html>

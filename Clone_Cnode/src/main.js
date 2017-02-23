@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import infiniteScroll from 'vue-infinite-scroll'
 import routes from './routes'
+// import App from './App'
 
 Vue.use(VueRouter)
 Vue.use(infiniteScroll)
@@ -12,6 +13,7 @@ const router = new VueRouter({
 })
 
 new Vue({
-  router
+  router,
+  template: '<router-view><router-view>'
 }).$mount('#root')
 // document.getElementById('root').appendChild(app)

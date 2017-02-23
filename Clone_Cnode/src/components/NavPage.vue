@@ -30,13 +30,11 @@ export default {
     z-index: 2;
     color: $fontColor;
     background-color: $baseBackColor;
-
     div {
       width: 25%;
       text-align: center;
       border-right: 1px solid $singleBorder;
       font-weight: $fontSize16;
-
       &:last-child {
         border-right: 0px;
       }

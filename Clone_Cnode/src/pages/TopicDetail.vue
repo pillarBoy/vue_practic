@@ -1,10 +1,9 @@
 <template lang="html">
   <div id="details">
-    <header>
-      <button type="button" name="button" @click='$router.go(-1)'>返回</button>
-    </header>
+    <div class='header'>
+      <button type="button" name="button" @click='$router.go(-1)'>{{'<<'}}返回</button>
+    </div>
     <div class="content">
-      <hr>
       <h2>author: {{details.author.loginname}}</h2>
       <h2>{{details.title}}</h2>
       <div v-html='details.content'></div>
@@ -48,7 +47,6 @@ export default {
         .then((json) => {
           this.$nextTick(() => {
             this.details = json.data
-            console.log(this.details)
           })
         })
     }
@@ -57,17 +55,25 @@ export default {
 </script>
 
 <style lang="css">
+@import '../style/index.css';
+
 #details {
   width: 100%;
   height: 100%;
   overflow: auto;
-  header {
+  .header {
     position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    line-height: 1.8rem;
+    background-color: $baseBackColor;
   }
   .content {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 3rem;
     max-width: 100%;
+    padding: .8rem;
   }
   img {
     max-width: 100%;

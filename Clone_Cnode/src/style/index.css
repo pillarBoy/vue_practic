@@ -1,9 +1,14 @@
 $fontSize16: 16px;
 $fontSize: 12px;
 $fontColor: #333;
+
+$testColor: #ffa;
+
 $baseBackColor: #eee;
 $headerBackColor: #ececec;
-$testColor: #ffa;
+$white: #fff;
+
 $singleBorder: #ccc;
+
 $activeBackColor: #ccc;
 $activeColor: #111;
