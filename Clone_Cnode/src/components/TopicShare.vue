@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div id="share">
     <TopicList />
   </div>
 </template>
@@ -20,4 +20,5 @@ export default {
 </script>
 
 <style lang="css">
+
 </style>

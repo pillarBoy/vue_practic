@@ -1,0 +1,55 @@
+@function pxToRem($pxToRem) {
+  // @return $pxToRem / 64px * 1rem;
+  // $remResult: $pxToRem;
+  // @if ([data-dpr="2"]) {
+  //   $remResult: $pxToRem / 75px * 1rem;
+  // }
+  // @if ([data-dpr="2.5"]) {
+  //   $remResult: $pxToRem / 75px * 1rem;
+  // }
+  // @if ([data-dpr="3"]) {
+  //   $remResult: $pxToRem / 75px * 1rem;
+  // }
+  // @return $remResult;
+
+  @return $pxToRem / 75px + rem;
+}
+
+
+@mixin fontSizeDpr($px){
+  font-size: $px;
+  @if ([data-dpr="2"]) {
+    font-size: $px * 2;
+  }
+
+  @if ([data-dpr="3"]) {
+    font-size: $px * 3;
+  }
+
+}
+
+@function pxToPx($px) {
+  $result: $px;
+  @if ([data-dpr="2"]) {
+    $result: $px * 2;
+  }
+  @if ([data-dpr="3"]) {
+    $result: $px * 2;
+  }
+  @return $result;
+}
+
+$fontSize16: pxToRem(16px);
+$fontSize: pxToRem(12px);
+$fontColor: #333;
+
+$testColor: #ffa;
+
+$baseBackColor: #eee;
+$headerBackColor: #ececec;
+$white: #fff;
+
+$singleBorder: #ccc;
+
+$activeBackColor: #ccc;
+$activeColor: #111;

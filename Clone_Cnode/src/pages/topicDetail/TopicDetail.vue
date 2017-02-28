@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import './topic.scss'
 export default {
   data () {
     return {
@@ -55,38 +56,5 @@ export default {
 </script>
 
 <style lang="css">
-@import '../style/index.css';
 
-#details {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  .header {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    line-height: 1.8rem;
-    background-color: $baseBackColor;
-  }
-  .content {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    max-width: 100%;
-    padding: .8rem;
-  }
-  img {
-    max-width: 100%;
-  }
-  pre.prettyprint {
-    word-wrap: normal;
-    max-width: 100%;
-    padding: 1.5rem;
-    overflow: auto;
-  }
-  code {
-    max-width: 100%;
-    overflow: auto;
-  }
-}
 </style>

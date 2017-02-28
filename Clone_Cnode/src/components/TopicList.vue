@@ -2,8 +2,8 @@
   <div id='topice-list' v-infinite-scroll='getDates' infinite-scroll-disabled="busy" infinite-scroll-distance="30">
     <ul>
       <li v-for='item in datas' :key='item.id' @click='topicDetail(item)'>
-        <p><b>{{item.author.loginname}}&nbsp;</b>{{item.tab}}</p>
-        <h3>{{item.title}}</h3>
+        <p><i>{{item.author.loginname}}&nbsp;</i><mark v-if='!item.top'>{{item.tab | to-upper-case}}</mark><mark v-if='item.top'>TOP</mark></p>
+        <h5>{{item.title}}</h5>
       </li>
     </ul>
   </div>
@@ -17,6 +17,9 @@ export default {
       datas: []
     }
   },
+  // beforemounted () {
+  //   this.getDates()
+  // },
   mounted () {
     // 过渡动画结束后，infinite-scroll 不会自动调用获取数据函数了（原因未知），手动调用getDates
     // this.getDates()
@@ -43,11 +46,9 @@ export default {
         })
         this.busy = false
         // this.datas = this.datas.concat(json.data)
-        console.log(json)
       })
     },
     topicDetail: function (topic) {
-      console.log(topic.id)
       this.$router.push({path: '/topic/' + topic.id})
     }
   }
@@ -56,16 +57,25 @@ export default {
 
 <style lang="css">
   #topice-list {
-    position: absolute;
-    left: 0px;
-    top: 0;
-    bottom: 0;
-    right: 0px;
-    overflow: scroll;
     ul {
-      padding: 0.8rem;
       li {
-        padding:  .6rem 0;
+        padding:  .2rem 0;
+        border-bottom: 1px solid #ccc;
+        p {
+          &:nth-child(1) {
+            line-height: .3rem;
+          }
+        }
+        i {
+          font-size: .15rem;
+        }
+        mark {
+          float: right;
+          width: 1rem;
+          padding: .05rem 0;
+          text-align: center;
+          font-size: .3rem;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
-$fontSize16: 16px;
-$fontSize: 12px;
+$fontSize16: pxToRem(16px);
+$fontSize: pxToRem(12px);
 $fontColor: #333;
 
 $testColor: #ffa;

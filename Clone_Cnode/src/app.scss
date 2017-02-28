@@ -1,0 +1,32 @@
+@import "./style/index.scss";
+
+#app {
+  // @include fontSizeDpr(16px);
+  font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $fontColor;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  font-size: pxToPx(12px);
+  .active {
+    font-weight: bold;
+    color: $activeColor;
+    background-color: $activeBackColor;
+  }
+}
+
+.zoom-enter-active {
+  animation: zoomIn .5s ease-in-out;
+}
+
+.zoom-leave-active {
+   animation: zoomOut .5s ease-in-out;
+}
+
+a{
+  color: $fontColor;
+}

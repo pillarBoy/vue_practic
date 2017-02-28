@@ -1,0 +1,23 @@
+@import "../../style/index.scss";
+#main-nav {
+  display: flex;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  font-size: pxToPx(18px);
+  z-index: 2;
+  color: $fontColor;
+  background-color: $baseBackColor;
+  div {
+    width: 25%;
+    text-align: center;
+    // padding: pxToPx(10px) pxToPx(12px);
+    line-height: 1rem;
+    border-right: 1px solid $singleBorder;
+    font-weight: $fontSize16;
+    &:last-child {
+      border-right: 0px;
+    }
+  }
+}

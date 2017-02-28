@@ -1,0 +1,37 @@
+@import '../../style/index.scss';
+#home-page {
+  header {
+    display: flex;
+    width: 100%;
+    font-size: pxToRem(pxToPx(16px));
+    background-color: $headerBackColor;
+    div {
+      width: 20%;
+      line-height: 1rem;
+      text-align: center;
+    }
+  }
+  .scroll-contain {
+    position: absolute;
+    left: 0px;
+    top: 1rem;
+    bottom: pxToRem(pxToPx(32.5px));
+    right: 0px;
+    padding: 0 .3rem;
+    overflow-y: auto;
+    font-size: 18px;
+  }
+  .left-to-right-in {
+    animation: fadeInDown .6s ease-in-out;
+  }
+  .left-to-right-out {
+    animation: bounceOutRight .6s ease-in-out;
+  }
+
+  .right-to-left-in {
+    animation: fadeInUp .6s ease-in-out;
+  }
+  .right-to-left-Out {
+    animation: bounceOutLeft .6s ease-in-out;
+  }
+}

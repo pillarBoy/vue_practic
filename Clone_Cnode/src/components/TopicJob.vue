@@ -1,10 +1,11 @@
 <template lang="html">
-  <div class="">
+  <div id="job">
     <TopicList />
   </div>
 </template>
 
 <script>
+import '../style/index.scss'
 import TopicList from './TopicList'
 
 export default {
@@ -20,4 +21,5 @@ export default {
 </script>
 
 <style lang="css">
+
 </style>

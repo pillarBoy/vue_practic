@@ -1,7 +1,6 @@
 import App from '../App'
-import NavPage from '../components/NavPage'
-import HomePage from '../pages/HomePage'
-
+import NavPage from '../components/navComponent/NavComponent'
+import HomePage from '../pages/homePage/HomePage'
 export default [
   {
     path: '/',
@@ -44,7 +43,7 @@ export default [
         path: '/topic/:vid', // topic detail
         name: 'name',
         meta: { auth: false },
-        component: resolve => require(['../pages/topicDetail'], resolve)
+        component: resolve => require(['../pages/topicDetail/TopicDetail'], resolve)
       }
     ]
   }
