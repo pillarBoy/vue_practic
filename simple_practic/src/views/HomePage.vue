@@ -24,7 +24,14 @@ export default {
       msg: 'home page',
       data: [],
       busy: false,
-      images: [require('assets/img/img01.png'), require('assets/img/img02.png'), require('assets/img/img03.png'), require('assets/img/img04.png'), require('assets/img/img05.png'), require('assets/img/img06.png')]
+      images: [
+        require('assets/img/img01.png'),
+        require('assets/img/img02.png'),
+        require('assets/img/img03.png'),
+        require('assets/img/img04.png'),
+        require('assets/img/img05.png'),
+        require('assets/img/img06.png')
+      ]
     }
   },
   methods: {
@@ -53,7 +60,7 @@ export default {
     }
     .test {
       position: relative;
-      
+
       left: 50px;
       width: 302px;
       height: 202px;
