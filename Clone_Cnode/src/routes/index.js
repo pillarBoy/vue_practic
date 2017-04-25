@@ -41,9 +41,15 @@ export default [
       },
       {
         path: '/topic/:vid', // topic detail
-        name: 'name',
+        name: 'topic',
         meta: { auth: false },
         component: resolve => require(['../pages/topicDetail/TopicDetail'], resolve)
+      },
+      {
+        path: '/test', // topic detail
+        name: 'test',
+        meta: { auth: false },
+        component: resolve => require(['../pages/TestPage'], resolve)
       }
     ]
   }
